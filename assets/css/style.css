@@ -11,14 +11,14 @@
 body {
   font-family: "Open Sans", sans-serif;
   background-color: #FFD700;
-  color: #fff;
+  color: #abc;
   position: relative;
   background: transparent;
 }
 body::before {
   content: "";
   position: fixed;
-  background: #040404 url("../img/bg.jpg") top right no-repeat;
+  background: #FFD700 url("../img/bg.jpg") top right no-repeat;
   background-size: cover;
   left: 0;
   right: 0;
