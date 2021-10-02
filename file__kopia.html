@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+    <xsl:template match="/">
+        <style>
+           
+            .tableR {
+                border-spacing: 0;
+                border: 1px solid;
+                border-radius: 15px;
+                background: #F7F7F7;
+                font-family: 'Segoe UI Varible', Tahoma, Geneva, Verdana, sans-serif;
+                margin:auto;
+
+            }
+
+                .tableR table {
+                    background: #fff123;
+                    width: 1093px;
+                    text-align:center;
+                    
+                }
+
+                .tableR td, .tableR th {
+                    padding: 12px;
+                    border-left: 1px solid;
+                    border-top: 1px solid;
+                    height: 5px;
+                     
+                }
+
+                .tableR th {
+                    background: #7FC7FF;
+                    font-size: 14px;
+                    border-top: none;
+                }
+
+                    .tableR td:first-child, .tableR th:first-child {
+                        border-left: none;
+                    }
+
+                    /* из-за background */
+
+                    .tableR th:first-child {
+                        border-top-left-radius: 15px;
+                    }
+
+                    .tableR th:last-child {
+                        border-top-right-radius: 15px;
+                    }
+
+                .tableR td:hover {
+                    background: #C6C3B5;
+                    /*border="0" style="padding: 5px; margin: 5px; height: 272px; width: 513px"*/
+                    /*border="0" style="padding: 5px; margin: 5px; height: 25px; width: 1093px"*/
+                }
+                .tableR td:active {
+                    border: 3px;
+                    background: #ffd700;
+                }
+
+
+
+
+            .tableQ {
+                border-spacing: 0;
+                border: 1px solid;
+                border-radius: 15px;
+                background: #F7F7F7;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: auto;
+            }
+
+                .tableQ table {
+                    background: #fff123;
+                    width: 1093px;
+                }
+
+                .tableQ td, .tableQ th {
+                    padding: 12px;
+                    border-left: 1px solid;
+                    border-top: 1px solid;
+                    height: 5px;
+                }
+
+                .tableQ th {
+                    background: #db5856;
+                    font-size: 14px;
+                    border-top: none;
+                }
+
+                    .tableQ td:first-child, .tableR th:first-child {
+                        border-left: none;
+                    }
+
+                    /* из-за background */
+
+                    .tableQ th:first-child {
+                        border-top-left-radius: 15px;
+                    }
+
+                    .tableQ th:last-child {
+                        border-top-right-radius: 15px;
+                    }
+
+                .tableQ td:hover {
+                    background: #C6C3B5;
+                    /*border="0" style="padding: 5px; margin: 5px; height: 272px; width: 513px"*/
+                    /*border="0" style="padding: 5px; margin: 5px; height: 25px; width: 1093px"*/
+                }
+
+                .tableQ td:active {
+                    border: 3px;
+                    background: #ffd700;
+                }
+
+
+            .tableT {
+                border-spacing: 0;
+                border: 0;
+                border-radius: 22px;
+                background: #F3F3F4;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin:10px;
+
+            }
+
+                .tableT table {
+                    background: #fff123;
+                    width: 1093px;
+              }
+
+                .tableT td, .tableT th {
+                    padding: 12px;
+                    border-left: 0px solid;
+                    border-top: 0px solid;
+                    margin: 5px;
+                    height: 50px;
+                    width: 1098px;
+                    font-size:16px;
+                    text-align:center;
+                }
+
+                    .tableT td:first-child, .tableT th:first-child {
+                        border-left: none;
+                    }
+
+                    /* из-за background */
+
+                    .tableT th:first-child {
+                        border-top-left-radius: 22px;
+                        
+                    }
+
+                    .tableT th:last-child {
+                        border-top-right-radius: 22px;
+                    }
+           
+
+        </style>
+        <html>
+
+        <body bgcolor="#FFFFFF">
+            <table class="tableT">
+                <tr style="font-family: Tahoma; font-size: 16px;">
+                    <th><div>Параметры загрузки</div></th>
+                </tr>
+
+            </table>
+             
+            <table class="tableR">
+                <tr style="font-family: Tahoma; font-size: 12px;">
+                    <th>Параметр</th>
+                    <th>Значение</th>
+                </tr>
+                <xsl:for-each select="ПараметрыЗагрузки/ЗначениеПараметра">
+                    <tr>
+                        <td><xsl:value-of select="Параметр" /></td>
+                        <xsl:choose>
+                            <xsl:when test="Значение = 'Загрузка завершена с ошибками'">
+                                <td><xsl:value-of select="Значение" /></td>
+                            </xsl:when>
+                            <xsl:when test="Значение = 'Загрузка прервана'">
+                                <td><xsl:value-of select="Значение" /></td>
+                            </xsl:when>
+                            <xsl:when test="Значение = 'Загрузка успешно завершена'">
+                                <td><xsl:value-of select="Значение" /></td>
+                            </xsl:when>
+                            <xsl:when test="Значение = 'Загрузка запущена'">
+                                <td><xsl:value-of select="Значение" /></td>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <td><xsl:value-of select="Значение" /></td>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </tr>
+                </xsl:for-each>
+            </table>
+
+
+            <xsl:if test="ПараметрыЗагрузки/ЗначениеПараметра/Значение = 'Загрузка успешно завершена' or ПараметрыЗагрузки/ЗначениеПараметра/Значение = 'Загрузка завершена с ошибками'">
+
+                <table class="tableT">
+                    <tr>
+                        <th>Статистика загрузки</th>
+                    </tr>
+                </table>
+
+                <table border="0" style="padding: 5px; margin: 5px; width: 513px">
+                    <tr style="font-family: Tahoma; font-size: 12px;">
+                        <th>Объект</th>
+                        <th>Вставлено</th>
+                        <th>Обновлено</th>
+                        <th>Всего</th>
+                    </tr>
+                    <xsl:for-each select="ПараметрыЗагрузки/Статистика">
+                        <tr>
+                            <td><xsl:value-of select="Объект" /></td>
+                            <td><xsl:value-of select="Вставлено" /></td>
+                            <td><xsl:value-of select="Обновлено" /></td>
+                            <td><xsl:value-of select="Всего" /></td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
+
+
+                <table class="tableT">
+                    <tr>
+                        <th>Время выполнения пакетов ETL</th>
+                    </tr>
+                </table>
+
+                <table class="tableR">
+                    <tr>
+                        <th>   </th>
+                        <th>Название пакета</th>
+                        <th>Время старта</th>
+                        <th>Время окончания</th>
+                        <th>Время выполнения</th>
+                        <th>Предупреждения</th>
+                        <th>Ошибки</th>
+                    </tr>
+                    <xsl:for-each select="ПараметрыЗагрузки/ВыполнениеПакетов">
+                        <tr>
+                            <xsl:choose>
+                                <xsl:when test="Ошибки > 0">
+                                    <td><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABP0lEQVR4XqWTvUoDQRSFr4NBWRAD+gA+gMXmDWJlFbC3iCBY2Qm2YmttKyhYaaFtGiPY2CWFD2BjEwiugkv8XecbcmHmEgTJgUs2371ndmY4OyNGZVluedD21TStW19nWZadKrDGFV+915tONdhsVU/LkhSMHjPMqi/sYAx6b3s79Y/Lc/lLc9u7kh0cFR40/G4e3ZhflYf7wVxbzUNZKX8/ORZm8cAdZ/66v8tpYFy67lLJIpYziwev48JGHsRyi3UdVnNgsfDg5fzpZTXz6rt4rhC/0TO9ZBbvrBh9PvRluLGWvPXnpYCFnpWTKWUXiM/Mm6n4TiYGqKvBMefn/0SmwcLriOe8D4fKnlnvBBYLD15NIinMNUjIXFjMNY19n8RGEmUSRkj+HWUeAKy6cNGR2npLrGD0mFEzfOrP+Rf4+xT8EskwMAAAAABJRU5ErkJggg==" alt="Завершено с ошибкой" /></td>
+                                </xsl:when> 
+                                <xsl:when test="Предупреждения > 0">
+                                    <td><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAx0lEQVR4XpWSMQ7CMAxFf4xAyBMLCxMrO8dhaBcuwdCJS3RJBw7SA/QGTCxdWJgiQYWKXJWKIXHIlyw5lqr34tQgEOdcBsCOx5yZK3hCCKdYXneQkh4pEfqzLfu+wVDSyyzFoJjfz9NB+pAF+eizx2Vruts0k15mPgvS6GYvpVtQhB61IB/dk6AF6fS4Ben0uIX5odtFe8Q/eW1KvFeH4e8khT6+gm5B+t3juyDt7n0jpe+CANTd+oTUjN/U3yVaABnSUjFz/gFq44JaVSCXeQAAAABJRU5ErkJggg==" alt="Предупреждение" /></td>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <td><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABOElEQVR4XqVTIWvDQBh9HVWBwWzEYGow19KpQiBqrqKiYqpVkf0BcTX9ASdr2jBZMRFRe1CYysjcYDAoTIS5wCB6eXAXsjt2YezBme/73vfeF156MFBV1QLAHEBotCSAxPO8HVo4axGv6pfnn/k2lnEYPARoP9bY4wxnoUAHUIV8/bS+OLwf4MLsZobl7bIEMKzdnLSDR5GJTjKxf92Ds+SAJ/Dm2tqAjd8wuZ4gizKk92mzhBxy6WDOggvRKAKxed78cEIuF4THj6NT3T/3UXwVSN9SaChOyAV/ULfRhwHeScWVXIEw1C2YDqiklTvV9QIZXAZQoBIVqexUVxzJBQnDYbuAU11xEp1EpnBgBcmdxpc6iUOdxGk8jkvDSVeUp81HZKaZbW4Vd0LdZ9/MHmc4qzj49+/8DReTp9S7vY7uAAAAAElFTkSuQmCC" alt="Успешно" /></td>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                            <td><xsl:value-of select="НазваниеПакета" /></td>
+                            <td><xsl:value-of select="ВремяСтарта" /></td>
+                            <td><xsl:value-of select="ВремяОкончания" /></td>
+                            <td><xsl:value-of select="ОбщеевремяВыполнения" /></td>
+                            <td><xsl:value-of select="Предупреждения" /></td>
+                            <td><xsl:value-of select="Ошибки" /></td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
+
+                <xsl:if test="ПараметрыЗагрузки/ДетализацияСообщений/ТипСообщения = 'OnWarning' or ПараметрыЗагрузки/ДетализацияСообщений/ТипСообщения = 'OnError'">
+
+                    <table class="tableT">
+                        <tr>
+                            <th>Детализация сообщений</th>
+                        </tr>
+                    </table>
+
+                    <table class="tableQ">
+                        <tr bgcolor="#FF0000">
+                            <th bgcolor="#FF0000" scope="col" height="25"> </th>
+                            <th bgcolor="#FF0000" scope="col" height="25">Название пакета</th>
+                            <th bgcolor="#FF0000" scope="col" height="25">Время сообщения</th>
+                            <th bgcolor="#FF0000" scope="col" height="25">Сообщение</th>
+                            <th bgcolor="#FF0000" scope="col" height="25">Путь выполнения</th>
+                        </tr>
+                        <xsl:for-each select="ПараметрыЗагрузки/ДетализацияСообщений">
+                            <tr>
+                                <xsl:choose>
+                                    <xsl:when test="ТипСообщения= 'OnError'">
+                                        <td><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABP0lEQVR4XqWTvUoDQRSFr4NBWRAD+gA+gMXmDWJlFbC3iCBY2Qm2YmttKyhYaaFtGiPY2CWFD2BjEwiugkv8XecbcmHmEgTJgUs2371ndmY4OyNGZVluedD21TStW19nWZadKrDGFV+915tONdhsVU/LkhSMHjPMqi/sYAx6b3s79Y/Lc/lLc9u7kh0cFR40/G4e3ZhflYf7wVxbzUNZKX8/ORZm8cAdZ/66v8tpYFy67lLJIpYziwev48JGHsRyi3UdVnNgsfDg5fzpZTXz6rt4rhC/0TO9ZBbvrBh9PvRluLGWvPXnpYCFnpWTKWUXiM/Mm6n4TiYGqKvBMefn/0SmwcLriOe8D4fKnlnvBBYLD15NIinMNUjIXFjMNY19n8RGEmUSRkj+HWUeAKy6cNGR2npLrGD0mFEzfOrP+Rf4+xT8EskwMAAAAABJRU5ErkJggg==" alt="Завершено с ошибкой" /></td>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <td><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAx0lEQVR4XpWSMQ7CMAxFf4xAyBMLCxMrO8dhaBcuwdCJS3RJBw7SA/QGTCxdWJgiQYWKXJWKIXHIlyw5lqr34tQgEOdcBsCOx5yZK3hCCKdYXneQkh4pEfqzLfu+wVDSyyzFoJjfz9NB+pAF+eizx2Vruts0k15mPgvS6GYvpVtQhB61IB/dk6AF6fS4Ben0uIX5odtFe8Q/eW1KvFeH4e8khT6+gm5B+t3juyDt7n0jpe+CANTd+oTUjN/U3yVaABnSUjFz/gFq44JaVSCXeQAAAABJRU5ErkJggg==" alt="Предупреждение" /></td>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                                <td><xsl:value-of select="НазваниеПакета" /></td>
+                                <td><xsl:value-of select="ВремяСообщения" /></td>
+                                <td><xsl:value-of select="Сообщение" /></td>
+                                <td><xsl:value-of select="ПутьВыполнения" /></td>
+                            </tr>
+                        </xsl:for-each>
+                    </table>
+                </xsl:if>
+            </xsl:if>
+        </body>
+    </html>
+    </xsl:template>
+</xsl:stylesheet>
