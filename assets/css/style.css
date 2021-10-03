@@ -10,7 +10,7 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #FFD700;
+  background-color: black;
   color: blue;
   position: relative;
   background: transparent;
@@ -33,7 +33,7 @@ body::before {
 }
 
 a {
-  color: #FFD700;
+  color: white;
   text-decoration: none;
 }
 
